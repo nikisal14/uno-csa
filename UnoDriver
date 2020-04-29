@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class UnoDriver {
+	public static void main(String[] args) {
+		ArrayList <UnoCard> playerOne = new ArrayList <UnoCard> ();
+		ArrayList <UnoCard> playerTwo = new ArrayList <UnoCard> ();
+		for (int i = 1; i <=7; i++) {
+			UnoCard card = new UnoCard();
+			playerOne.add(card);
+		}
+		for (int i = 1; i <=7; i++) {
+			UnoCard card = new UnoCard();
+			playerTwo.add(card);
+		}
+	    System.out.println("My hand");
+	    for (int i = 0; i < 7; i++) {
+	    	System.out.print(playerOne.get(i) + " ");
+	    }
+	    System.out.println();
+	    System.out.println("Computer hand");
+	    for (int i = 0; i < 7; i++) {
+	    	System.out.print(playerTwo.get(i) + " ");
+	    }
+	   }
+}
