@@ -1,0 +1,35 @@
+import java.util.Random;
+
+public class UnoCard {
+	private int number;	//number of UNO card
+	private String color; //color of UNO card
+	private Random rand = new Random();
+	
+  /**
+   * Constructor to initialize the UNO card
+   */
+	public UnoCard() {
+		number = rand.nextInt(9) + 1; //assign random number to the card
+		int randomLetter = rand.nextInt(4) + 1; //assign random color to the card
+		if (randomLetter == 1) {
+			color = "R";
+		}
+		if (randomLetter == 2) {
+			color = "G";
+		}
+		if (randomLetter == 3) {
+			color = "Y";
+		}
+		if (randomLetter == 4) {
+			color = "B";
+		}
+	}
+	
+  /**
+   * Method to return the UNO card
+   */
+	public String toString() { 
+		return color + number;
+	}
+
+}
