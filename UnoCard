@@ -25,6 +25,22 @@ public class UnoCard {
 		}
 	}
 	
+	/**
+	 * Getter method to get card color 
+	 * @return color of card
+	 */
+	public String getColor() {
+		return color;
+	}
+	
+	/**
+	 * Getter method to get card number
+	 * @return card number
+	 */
+	public int getNumber () {
+		return number;
+	}
+	
   /**
    * Method to return the UNO card
    */
