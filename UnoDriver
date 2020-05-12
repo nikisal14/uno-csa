@@ -1,25 +1,78 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UnoDriver {
+	
 	public static void main(String[] args) {
+		
 		ArrayList <UnoCard> playerOne = new ArrayList <UnoCard> ();
 		ArrayList <UnoCard> playerTwo = new ArrayList <UnoCard> ();
-		for (int i = 1; i <=7; i++) {
+		UnoCard faceCard = new UnoCard(); //card laying face up
+		Scanner sc = new Scanner(System.in);
+		
+		//add cards to hand of player 1
+		for (int i = 1; i <= 7; i++) {
 			UnoCard card = new UnoCard();
 			playerOne.add(card);
 		}
-		for (int i = 1; i <=7; i++) {
+		
+		//add cards to hand of player 2
+		for (int i = 1; i <= 7; i++) {
 			UnoCard card = new UnoCard();
 			playerTwo.add(card);
 		}
-	    System.out.println("My hand");
-	    for (int i = 0; i < 7; i++) {
+		
+		//print out hand with respective number for player 1
+    	System.out.println("My hand");
+		for (int i = 1; i <= playerOne.size(); i++) {
+	    	System.out.print(i + "  ");
+	    }
+		System.out.println();
+		for (int i = 0; i < 7; i++) {
 	    	System.out.print(playerOne.get(i) + " ");
 	    }
-	    System.out.println();
-	    System.out.println("Computer hand");
-	    for (int i = 0; i < 7; i++) {
-	    	System.out.print(playerTwo.get(i) + " ");
+		System.out.println();
+		
+		//loop to player uno game with one player
+	    while (playerOne.size() > 0) {
+	    	System.out.println("The card laying face up is " + faceCard);
+			System.out.println("What card are you going to play? Type the number of the card or to draw, type 0:");
+			int input = sc.nextInt();
+			if (input == 0) {
+				playerOne.add(new UnoCard());
+			}
+			else {
+				System.out.println("You played: " + playerOne.get(input - 1));
+			}
+			
+			//checks to see if card played is the same color or number; if it is, removes card
+			if (input != 0) {
+				if (playerOne.get(input - 1).getColor().equals(faceCard.getColor()) || playerOne.get(input - 1).getNumber() == faceCard.getNumber()) {
+					faceCard = playerOne.get(input - 1);
+					playerOne.remove(input - 1);
+				}
+			}
+			
+			//print out cards with respective number after player has played
+	    	if (playerOne.size() != 0) {
+				System.out.println("Here is your hand");
+				for (int i = 1; i <= playerOne.size(); i++) {
+			    	System.out.print(i + "  ");
+			    }
+				System.out.println();
+				for (int i = 0; i < playerOne.size(); i++) {
+			    	System.out.print(playerOne.get(i) + " ");
+			    }
+				System.out.println();
+	    	}
 	    }
-	   }
+	    
+//	    System.out.println();
+//	    
+//	    System.out.println("Computer hand");
+//	    for (int i = 0; i < 7; i++) {
+//	    	System.out.print(playerTwo.get(i) + " ");
+//	    }
+	    sc.close();
+	}
 }
